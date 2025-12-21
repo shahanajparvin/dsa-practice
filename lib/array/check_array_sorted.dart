@@ -1,5 +1,5 @@
 void main() {
-  List<int> arr = [1, 2, 5, 4];
+  List<int> arr = [1, 2, 3, 4];
   bool result = isArraySorted(arr);
 
   print('is array sorted $result');
