@@ -1,0 +1,69 @@
+void main() {
+  List<int> arr = [1, 2, 3, 4, 5];
+
+  final rotated = rotateArrayByK(arr, 3);
+  print('rotate array$rotated');
+}
+
+dynamic rotateArrayByOne() {
+  List arr = [1, 2, 3, 4, 5];
+
+  int length = arr.length;
+
+  if (length <= 1) return;
+
+  int lastValue = arr[length - 1];
+
+  for (int i = length - 2; i >= 0; i--) {
+    arr[i + 1] = arr[i];
+  }
+
+  arr[0] = lastValue;
+
+  print('rotated array: $arr');
+}
+
+List<int> reverseArray(List<int> arr, int start, int end) {
+  while (start < end) {
+    int temp = arr[start];
+    arr[start] = arr[end];
+    arr[end] = temp;
+    start++;
+    end--;
+  }
+  return arr;
+}
+
+List<int> rotateArrayByK(List<int> arr, int k) {
+  int n = arr.length;
+
+  reverseArray(arr, 0, n - 1);
+
+  print('reverseArray array: $arr');
+
+  k = k % n;
+
+  reverseArray(arr, 0, k - 1);
+
+  print('reverseArray array1: $arr');
+
+  reverseArray(arr, k, n - 1);
+
+  return arr;
+}
+
+dynamic rotateArrayByTwo() {
+  List arr = [1, 2, 3, 4, 5];
+
+  int length = arr.length;
+
+  int lastValue = arr[length - 1];
+
+  for (int i = length - 2; i >= 0; i--) {
+    arr[i + 1] = arr[i];
+  }
+
+  arr[0] = lastValue;
+
+  print('rotated array: $arr');
+}
