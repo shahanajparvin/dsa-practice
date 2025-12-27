@@ -1,5 +1,3 @@
-import 'dart:math' as Math;
-
 void main() {
   List<int> arr1 = [1, 3, 5];
 

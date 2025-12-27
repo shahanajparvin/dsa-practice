@@ -1,8 +1,7 @@
 import 'dart:math' as Math;
 
 void main() {
-  List<int> arr = [-2, -4];
-
+  List<int> arr = [1, 7, -1, -3, 1, 5, 3, -1, 2, 4];
   int result = maxSubArray(arr);
 
   print('result : $result');

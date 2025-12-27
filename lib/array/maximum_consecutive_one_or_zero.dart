@@ -1,5 +1,3 @@
-import 'dart:math' as Math;
-
 void main() {
   List<int> arr = [0, 1, 0, 1, 1, 1, 1];
   int result = maximumConsecutiveZeroOrOne(arr);
