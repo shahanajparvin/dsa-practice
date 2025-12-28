@@ -9,10 +9,12 @@ void main() {
   listExample.addValue(30);
   listExample.addValue(50);
   listExample.addValue(60);
-  Node? median = listExample.medianValue();
-  print('-----median value ' + median!.value!.toString());
-  print('-----median valued fcff ' + median!.next!.value.toString());
-  listExample.printNodes();
+  listExample.addValue(70);
+  Node? secondmedian = listExample.secondMedianValue();
+  Node? firstmedian = listExample.firstMedianValue();
+  print('-----secondmedianmedian value ' + secondmedian!.value!.toString());
+  print('-----firstmedian value ' + firstmedian!.value!.toString());
+  listExample.printNodes(secondmedian);
 }
 
 class Node {
@@ -40,13 +42,13 @@ class LinkdListExample {
     current.next = newNode;
   }
 
-  Node? medianValue() {
+  Node? secondMedianValue() {
     if (head == null) return null;
 
     Node? fast = head!;
     Node? slow = head!;
 
-    while (fast!.next != null) {
+    while (fast != null && fast.next != null) {
       fast = fast.next!.next;
       slow = slow!.next;
     }
@@ -54,11 +56,22 @@ class LinkdListExample {
     return slow;
   }
 
-  void printNodes() {
-    if (head == null) {
-      return;
+  Node? firstMedianValue() {
+    if (head == null) return null;
+
+    Node? fast = head!;
+    Node? slow = head!;
+
+    while (fast != null && fast.next != null && fast.next!.next != null) {
+      fast = fast.next!.next;
+      slow = slow!.next;
     }
-    Node? current = head!;
+
+    return slow;
+  }
+
+  void printNodes(Node head) {
+    Node? current = head;
 
     while (current != null) {
       print(' node - ${current.value}');

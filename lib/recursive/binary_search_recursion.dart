@@ -6,32 +6,6 @@ void main() {
   print('result : $result');
 }
 
-int binarySearch(List<int> arr, int target) {
-  int n = arr.length;
-
-  int left = 0;
-  int right = n - 1;
-
-  while (left <= right) {
-    int mid = left + (right - left) ~/ 2;
-
-    print(' mid value ${arr[mid]}');
-
-    if (target == arr[mid]) {
-      return mid;
-    } else if (target > arr[mid]) {
-      left = mid + 1;
-    } else {
-      right = mid - 1;
-    }
-    print(' left $left');
-
-    print(' right $right');
-  }
-
-  return -1;
-}
-
 int recursiveBinary(List<int> arr, int left, int right, int target) {
   print('---left $left right $right');
 
