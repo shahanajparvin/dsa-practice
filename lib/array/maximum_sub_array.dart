@@ -10,17 +10,14 @@ List<int> maxSubArray(List<int> arr) {
 
   int maxSum = -10 ^ 8;
   int currentSum = -10 ^ 8;
-  int l = 0;
 
   for (int i = 0; i < n; i++) {
     if (currentSum + arr[i] < arr[i]) {
       currentSum = arr[i];
-      l = i;
     } else {
       currentSum = currentSum + arr[i];
     }
     if (currentSum < maxSum) {
-      l++;
     } else {
       maxSum = currentSum;
     }

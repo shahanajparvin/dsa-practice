@@ -1,6 +1,5 @@
 void main() {
   List<int> arr = [1, 0, 2, -1, -1, 1, 3, 4, 6, 3, -2];
-  int target = 6;
 
   List result = threeSumPair(arr);
 

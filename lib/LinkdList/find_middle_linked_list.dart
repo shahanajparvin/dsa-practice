@@ -1,5 +1,3 @@
-import 'package:path/path.dart';
-
 void main() {
   LinkdListExample listExample = LinkdListExample();
   /*  
@@ -12,8 +10,8 @@ void main() {
   listExample.addValue(70);
   Node? secondmedian = listExample.secondMedianValue();
   Node? firstmedian = listExample.firstMedianValue();
-  print('-----secondmedianmedian value ' + secondmedian!.value!.toString());
-  print('-----firstmedian value ' + firstmedian!.value!.toString());
+  print('-----secondmedianmedian value ${secondmedian!.value}');
+  print('-----firstmedian value ${firstmedian!.value}');
   listExample.printNodes(secondmedian);
 }
 

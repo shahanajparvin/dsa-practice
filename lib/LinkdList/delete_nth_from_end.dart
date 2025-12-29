@@ -1,5 +1,3 @@
-import 'package:path/path.dart';
-
 void main() {
   LinkdListExample listExample = LinkdListExample();
   /*  
