@@ -7,13 +7,20 @@ void main() {
 }
 
 bool isValidPalindrom(String s) {
-  List<String> chars = s.split('');
-  int n = chars.length;
+  int n = s.length;
   int left = 0;
   int right = n - 1;
 
   while (left < right) {
-    if (chars[left] != chars[right]) {
+    while (left < right && !(isAlphaNumeric(s[left]))) {
+      left++;
+    }
+
+    while (left < right && !(isAlphaNumeric(s[right]))) {
+      right--;
+    }
+
+    if (s[left] != s[right]) {
       return false;
     }
     left++;
@@ -21,4 +28,15 @@ bool isValidPalindrom(String s) {
   }
 
   return true;
+}
+
+bool isAlphaNumeric(String s) {
+  int code = s.codeUnitAt(0);
+
+  if (code >= 48 && code <= 57 ||
+      code >= 65 && code <= 90 ||
+      code >= 97 && code <= 122) {
+    return true;
+  }
+  return false;
 }

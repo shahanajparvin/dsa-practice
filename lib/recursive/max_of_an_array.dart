@@ -1,4 +1,4 @@
-import 'dart:math' as Math;
+import 'dart:math' as math;
 
 void main() {
   List<int> arr = [1, 4, 6, 3, 0];
@@ -11,10 +11,10 @@ void main() {
 int recursive(List<int> arr, int position, int max) {
   int n = arr.length;
   if (position == n - 1) {
-    return Math.max(max, arr[position]);
+    return math.max(max, arr[position]);
   }
-  int newMax = Math.max(max, arr[position]);
-  return Math.max(max, recursive(arr, position + 1, newMax));
+  int newMax = math.max(max, arr[position]);
+  return math.max(max, recursive(arr, position + 1, newMax));
 }
 
 int recursiveMax(List<int> arr) {
@@ -23,7 +23,7 @@ int recursiveMax(List<int> arr) {
 
 int recursiveMax1(List<int> arr, int position) {
   if (position == arr.length - 1) {
-    print('----------arr[position] ' + arr[position].toString());
+    print('----------arr[position] ${arr[position]}');
     return arr[position];
   }
   int maxInRest = recursiveMax1(arr, position + 1);

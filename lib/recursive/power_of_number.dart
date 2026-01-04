@@ -1,9 +1,9 @@
 void main() {
-  int x = 5;
+  int a = 2;
 
-  int n = 4;
+  int n = 5;
 
-  int result = powerOptimize(x, n);
+  int result = powerOptimize(a, n);
 
   print('result : $result');
 }

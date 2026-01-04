@@ -56,7 +56,7 @@ class LinkedList {
 
   // Reverse the linked list
   void reverse() {
-    Node? prev = null;
+    Node? prev;
     Node? current = head;
     Node? next;
 
