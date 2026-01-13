@@ -6,6 +6,34 @@ void main() {
   print(result);
 }
 
+/*
+1. Understand the problem: Remove duplicates from a sorted array in-place and return only unique elements.
+
+2. Use two pointers:
+
+i → iterates through the array.
+
+3. indexPosition → tracks where to place the next unique element.
+
+Initialize: Set indexPosition = 1 because the first element is always unique.
+
+4. Iterate and compare:
+
+For each arr[i], compare with arr[i-1].
+
+If different → copy arr[i] to arr[indexPosition] and increment indexPosition.
+
+5. Return result: Take arr.sublist(0, indexPosition) → contains all unique elements.
+
+6. Complexity:
+
+Time: O(n) (single pass)
+
+Space: O(1) (in-place)
+
+7. Dry-run example (quick):
+[1, 1, 2, 3, 3, 4] → process → [1, 2, 3, 4] */
+
 List<int> removeDuplicateFromSortArray(List<int> arr) {
   int n = arr.length;
 

@@ -1,9 +1,15 @@
 void main() {
   List<int> arr = [1, 0, 2, -1, -1, 1, 3, 4, 6, 3, -2];
 
-  List result = threeSumPair(arr);
+  int target = 6;
 
-  print('result : $result');
+  /* List result = threeSumPair(arr);
+
+  print('result : $result'); */
+
+  List result1 = findPairSum(arr, target);
+
+  print('result : $result1');
 }
 
 bool isPairExistWithGivenSome(List<int> arr, int target) {
@@ -98,6 +104,58 @@ List<List<int>> threeSumPair(List<int> arr) {
         }
       }
       seen.add(j);
+    }
+  }
+
+  return pairs;
+}
+
+// This is two sum for unsorted array
+// finad pair array
+// This is last final approach
+List<List<int>> findPairSum(List<int> arr, int target) {
+  int n = arr.length;
+  Map<int, int> map = {};
+  List<List<int>> pairs = [];
+
+  for (int i = 0; i < n; i++) {
+    int lookingValue = target - arr[i];
+    if (map.containsKey(lookingValue)) {
+      pairs.add([arr[i], lookingValue]);
+    }
+
+    map[arr[i]] = i;
+  }
+
+  return pairs;
+}
+
+// This is three sum for unsorted array
+// finad pair array
+// This is last final approach
+List<List<int>> threeSumSolution(List<int> arr, int target) {
+  int n = arr.length;
+  Map<int, int> map = {};
+  List<List<int>> pairs = [];
+  Set<String> usedPairs = {};
+
+  for (int i = 0; i < n - 2; i++) {
+    int nextTarget = target - arr[i];
+    for (int j = i + 1; j < n; j++) {
+      int lookingValue = nextTarget - arr[j];
+      if (map.containsKey(lookingValue)) {
+        int a = arr[i];
+        int b = arr[j];
+        int c = lookingValue;
+        List<int> triplet = [a, b, c]..sort();
+        String key = triplet.join(',');
+        if (!usedPairs.contains(key)) {
+          usedPairs.add(key);
+          pairs.add([a, b, lookingValue]);
+        }
+      }
+
+      map[arr[j]] = j;
     }
   }
 

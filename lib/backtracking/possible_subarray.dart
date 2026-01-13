@@ -7,18 +7,18 @@ void main() {
   List<int> nums = [1, 2, 3];
   List<List<int>> allSubsets = [];
 
-  backTrackingMyCode(nums: nums, current: [], index: 0, result: allSubsets);
+  backtrack(nums: nums, current: [], index: 0, allSubsets: allSubsets);
 
   print(allSubsets);
 }
 
 // Backtracking function completely separate
-void backtrack(
-  List<int> nums,
-  int index,
-  List<int> current,
-  List<List<int>> allSubsets,
-) {
+void backtrack({
+  required List<int> nums,
+  required int index,
+  required List<int> current,
+  required List<List<int>> allSubsets,
+}) {
   // Process current solution: add a copy
   allSubsets.add(List.from(current));
 
@@ -32,7 +32,12 @@ void backtrack(
     print('current $current');
 
     // Recurse
-    backtrack(nums, i + 1, current, allSubsets);
+    backtrack(
+      nums: nums,
+      index: i + 1,
+      current: current,
+      allSubsets: allSubsets,
+    );
 
     print('index call $i');
 

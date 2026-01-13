@@ -1,6 +1,6 @@
 void main() {
-  List<int> array = [2, -3, 4, -1, -2, 1, 5, -3];
-  List<int> result = maxSubArray(array);
+  List<int> array = [2, -3, 4, -1, -2, 1, 7, 3];
+  List<int> result = maxSubArrayLast(array);
 
   print(result);
 }
@@ -102,4 +102,40 @@ int maxSubArrayOptimize(List<int> arr) {
     }
   }
   return res;
+}
+
+List<int> maxSubArrayLast(List<int> arr) {
+  int n = arr.length;
+  int maxSum = arr[0];
+  int currentSum = arr[0];
+
+  int start = 0;
+  int bestStart = 0;
+  int bestEnd = 0;
+
+  /* At every index, I decide whether to extend the existing subarray or start a new subarray from the current element.
+
+If adding the current element to the previous sum gives a better result than starting fresh, I extend the subarray.
+Otherwise, I reset and start a new subarray from the current index.
+
+Time Complexity : o(n)
+Space Complexity : o(1)
+
+ */
+  for (int i = 1; i < n; i++) {
+    if (currentSum + arr[i] > arr[i]) {
+      currentSum = currentSum + arr[i];
+    } else {
+      currentSum = arr[i];
+      start = i;
+    }
+
+    if (currentSum > maxSum) {
+      maxSum = currentSum;
+      bestStart = start;
+      bestEnd = i;
+    }
+  }
+
+  return arr.sublist(bestStart, bestEnd + 1);
 }
