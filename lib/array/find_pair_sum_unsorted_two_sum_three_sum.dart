@@ -1,13 +1,15 @@
-void main() {
-  List<int> arr = [1, 0, 2, -1, -1, 1, 3, 4, 6, 3, -2];
+import 'dart:math';
 
-  int target = 6;
+void main() {
+  List<int> arr = [1, 0, 2, 2, 2, -1, -1, 1, 3, 3, 4, 6, 3, -2];
+
+  int target = 0;
 
   /* List result = threeSumPair(arr);
 
   print('result : $result'); */
 
-  List result1 = findPairSum(arr, target);
+  List result1 = findPairThreeSum(arr, target);
 
   print('result : $result1');
 }
@@ -160,4 +162,56 @@ List<List<int>> threeSumSolution(List<int> arr, int target) {
   }
 
   return pairs;
+}
+
+List<List<int>> findPair(List<int> arr, int target) {
+  int n = arr.length;
+  Map<int, int> map = {};
+  List<List<int>> pair = [];
+  Set<String> usedPair = {};
+
+  for (int i = 0; i < n; i++) {
+    int lookingValue = target - arr[i];
+
+    if (map.containsKey(lookingValue)) {
+      int a = arr[i];
+      int b = lookingValue;
+      String key = a > b ? '$a $b' : '$b $a';
+      if (!usedPair.contains(key)) {
+        usedPair.add(key);
+        pair.add([arr[i], lookingValue]);
+      }
+    }
+
+    map[arr[i]] = i;
+  }
+  return pair;
+}
+
+List<List<int>> findPairThreeSum(List<int> arr, int target) {
+  int n = arr.length;
+  Map<int, int> map = {};
+  List<List<int>> pair = [];
+  Set<String> usedPair = {};
+
+  for (int i = 0; i < n - 2; i++) {
+    int nextTarget = target - arr[i];
+
+    for (int j = i + 1; j < n; j++) {
+      int lookingValue = nextTarget - arr[j];
+      if (map.containsKey(lookingValue)) {
+        int a = arr[i];
+        int b = arr[j];
+        int c = lookingValue;
+        List<int> triplet = [a, b, c]..sort();
+        String key = triplet.join(',');
+        if (!usedPair.contains(key)) {
+          usedPair.add(key);
+          pair.add([a, b, c]);
+        }
+      }
+      map[arr[j]] = j;
+    }
+  }
+  return pair;
 }

@@ -1,8 +1,11 @@
 void main() {
   List<int> arr = [1, 2, 3, 4, 5, 6];
 
-  final rotated = rotateArrayByK(arr, 2);
+  /* final rotated = rotateArrayByK(arr, 2);
   print('rotate array$rotated');
+
+  rotateArrayByOne(); */
+  rotateArrByLeftOne(arr);
 }
 
 dynamic rotateArrayByOne() {
@@ -49,5 +52,22 @@ List<int> rotateArrayByK(List<int> arr, int k) {
 
   reverseArray(arr, k, n - 1);
 
+  return arr;
+}
+
+List<int> rotateArrByLeftOne(List<int> arr) {
+  int n = arr.length;
+
+  if (n <= 1) {
+    return arr;
+  }
+
+  int last = arr[n - 1];
+
+  for (int i = n - 2; i >= 0; i--) {
+    arr[i + 1] = arr[i];
+  }
+  arr[0] = last;
+  print('rotated array: $arr');
   return arr;
 }

@@ -70,3 +70,32 @@ int climbOptimized(int n) {
 
   return prev1;
 }
+
+int climbStairs(int n) {
+  // If there are 0 or 1 steps,
+  // there is exactly 1 way to climb (do nothing or one step)
+  if (n <= 1) return 1;
+
+  // dp[i] will store the number of ways to reach step i
+  // We need size (n + 1) because we count from step 0 to step n
+  List<int> dp = List.filled(n + 1, 0);
+
+  // Base case:
+  // 1 way to stay at step 0 (no movement)
+  dp[0] = 1;
+
+  // 1 way to reach step 1 (one single step)
+  dp[1] = 1;
+
+  // Calculate number of ways for each step from 2 to n
+  for (int i = 2; i <= n; i++) {
+    // To reach step i:
+    // - come from step (i - 1) by taking 1 step
+    // - come from step (i - 2) by taking 2 steps
+    // Total ways = ways to (i - 1) + ways to (i - 2)
+    dp[i] = dp[i - 1] + dp[i - 2];
+  }
+
+  // dp[n] contains the total number of ways to reach the top
+  return dp[n];
+}

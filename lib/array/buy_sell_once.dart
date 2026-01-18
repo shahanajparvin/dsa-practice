@@ -3,7 +3,7 @@ import 'dart:math' as Math;
 void main() {
   List<int> arr = [5, 1, 6, 9, 11];
 
-  int result = buySellOnceRightTraverse(arr);
+  int result = maxProfit(arr);
 
   print('result : $result');
 }
@@ -72,5 +72,30 @@ int buySellOnceRightTraverse(List<int> arr) {
 
   print('buying price ${arr[start]} Selling Price${arr[end]}');
 
+  return maxProfit;
+}
+
+int maxProfit(List<int> arr) {
+  int n = arr.length;
+
+  int minBuy = arr[0];
+  int maxProfit = 0;
+  int start = 0;
+  int end = 0;
+
+  for (int i = 1; i < n; i++) {
+    if (minBuy > arr[i]) {
+      minBuy = arr[i];
+      start = i;
+    }
+    int profit = arr[i] - minBuy;
+
+    if (profit > maxProfit) {
+      maxProfit = profit;
+      end = i;
+    }
+  }
+
+  print('buying price ${arr[start]} Selling Price${arr[end]}');
   return maxProfit;
 }

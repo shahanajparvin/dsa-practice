@@ -1,5 +1,5 @@
 void main() {
-  String s = '1234';
+  String s = '1234g';
   int result = stringToInt(s);
 
   print('result : $result');
@@ -30,9 +30,12 @@ int stringToInt(String s) {
   }
 
   print(' i $i');
-  while (i < n && s.codeUnitAt(i) >= 48 && s.codeUnitAt(i) <= 57) {
-    int digit = s.codeUnitAt(i) - 48; //0 ascii value 48
+  while (i < n &&
+      s.codeUnitAt(i) >= '0'.codeUnitAt(0) &&
+      s.codeUnitAt(i) <= '9'.codeUnitAt(0)) {
+    int digit = s.codeUnitAt(i) - '0'.codeUnitAt(0); //0 ascii value 48
     print(' digit $digit');
+    
     // 4️⃣ Overflow check
     if (result > intMax ~/ 10 || (result == intMax ~/ 10 && digit > 7)) {
       return sign == 1 ? intMax : intMin;

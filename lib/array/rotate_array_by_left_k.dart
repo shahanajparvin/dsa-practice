@@ -1,11 +1,11 @@
 void main() {
   List<int> arr = [1, 2, 3, 4, 5, 6];
 
-  final rotated = rotateArrayByK(arr, 2);
+  final rotated = rotateArrayByLeftK(arr, 2);
   print('rotate array$rotated');
 }
 
-List<int> rotateArrayByK(List<int> arr, int k) {
+List<int> rotateArrayByLeftK(List<int> arr, int k) {
   int n = arr.length;
 
   reverseArray(arr, 0, n - 1);

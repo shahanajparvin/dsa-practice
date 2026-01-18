@@ -1,7 +1,7 @@
 void main() {
-  List<int> arr = [1, 2, 3, 4, 5, 6, 9, 8];
+  List<int> arr = [1, 2, 3, 4, 5, 9, 8];
 
-  int result = findThirdLargestElement(arr);
+  int result = findThirdLargestLast(arr);
 
   print('result : $result');
 }
@@ -30,4 +30,26 @@ int findThirdLargestElement(List<int> arr) {
     }
   }
   return thirdLargest;
+}
+
+int findThirdLargestLast(List<int> arr) {
+  int n = arr.length;
+
+  int largest = arr[0];
+  int second = 0;
+  int third = 0;
+
+  for (int i = 0; i < n; i++) {
+    if (arr[i] >= largest) {
+      third = second;
+      second = largest;
+      largest = arr[i];
+    } else if (arr[i] < largest && arr[i] > second) {
+      third = second;
+      second = arr[i];
+    } else if (arr[i] < second && arr[i] > third) {
+      third = arr[i];
+    }
+  }
+  return third;
 }

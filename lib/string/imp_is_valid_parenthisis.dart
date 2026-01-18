@@ -18,8 +18,14 @@ bool isValidParenthis(String str) {
 
     if (pair.containsValue(ch)) {
       stack.add(ch);
-    } else if (stack.isEmpty || stack.removeLast() != pair[ch]) {
-      return false;
+    } else {
+      if (stack.isEmpty) {
+        return false;
+      }
+      String last = stack.removeLast();
+      if (last != pair[ch]) {
+        return false;
+      }
     }
   }
 

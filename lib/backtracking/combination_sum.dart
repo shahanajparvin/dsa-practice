@@ -1,9 +1,14 @@
 void main() {
-  List<int> candidates = [2, 3, 6, 2, 7, 1];
+  List<int> candidates = [2, 3, 6, 7];
   int target = 8;
 
-  List<List<int>> result = [];
+  dynamic result = getCombinationSum(candidates, target);
 
+  print(result);
+}
+
+List<List<int>> getCombinationSum(List<int> candidates, int target) {
+  List<List<int>> result = [];
   candidates.sort();
 
   combinationSum(
@@ -14,7 +19,7 @@ void main() {
     result: result,
   );
 
-  print(result);
+  return result;
 }
 
 combinationSum({

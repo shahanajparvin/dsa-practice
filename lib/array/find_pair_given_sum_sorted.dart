@@ -1,10 +1,10 @@
 import 'dart:isolate';
 
 void main() {
-  List<int> arr = [1, 0, 2, -1, -1, 1, 3, 4, 6, 3, -2];
+  List<int> arr = [1, 0, 2, -1, -1, 1, 1, 3, 4, 6, 3, -2];
   int target = 0;
 
-  dynamic result = findPairSortedArray(arr, target);
+  dynamic result = findPairSumLast(arr, target);
 
   print('result : $result');
 
@@ -123,4 +123,73 @@ List<List<int>> findPairThreeSumSortedArray(List<int> arr, int target) {
     }
   }
   return pairs;
+}
+
+List<List<int>> findPairSumLast(List<int> arr, int target) {
+  int n = arr.length;
+
+  int left = 0;
+  int right = n - 1;
+
+  List<List<int>> pair = [];
+
+  while (left < right) {
+    int sum = arr[left] + arr[right];
+
+    if (sum == target) {
+      pair.add([arr[left], arr[right]]);
+      int leftValue = arr[left];
+      while (left < right && arr[left] == leftValue) {
+        left++;
+      }
+      int rightValue = arr[right];
+      while (left < right && arr[right] == rightValue) {
+        right--;
+      }
+    } else if (sum < target) {
+      left++;
+    } else {
+      right--;
+    }
+  }
+
+  return pair;
+}
+
+List<List<int>> findPairThreeSum(List<int> arr, int target) {
+  arr.sort();
+
+  int n = arr.length;
+
+  List<List<int>> pair = [];
+
+  for (int i = 0; i < n - 2; i++) {
+    if (i > 0 && arr[i] == arr[i - 1]) {
+      continue;
+    }
+    int nextTarget = target - arr[i];
+    int left = i + 1;
+    int right = n - 1;
+
+    while (left < right) {
+      int sum = arr[left] + arr[right];
+      if (sum == nextTarget) {
+        pair.add([arr[i], arr[left], arr[right]]);
+
+        int leftValue = arr[left];
+        while (left < right && arr[left] == leftValue) {
+          left++;
+        }
+        int rightValue = arr[right];
+        while (left < right && arr[right] == rightValue) {
+          right--;
+        }
+      } else if (sum < nextTarget) {
+        left++;
+      } else {
+        right--;
+      }
+    }
+  }
+  return pair;
 }
